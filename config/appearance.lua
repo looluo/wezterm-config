@@ -11,27 +11,27 @@ return {
 
   -- color scheme
   -- colors = colors,
-  color_scheme = "Gruvbox dark, medium (base16)",
+  color_scheme = "Catppuccin Macchiato",
 
   -- background
   window_background_opacity = 1.00,
   win32_system_backdrop = "Acrylic",
-  window_background_gradient = {
-    colors = { "#1D261B", "#261A25" },
-    -- Specifices a Linear gradient starting in the top left corner.
-    orientation = { Linear = { angle = -45.0 } },
-  },
-  background = {
-    {
-      source = { File = wezterm.config_dir .. "/backdrops/space.jpg" },
-    },
-    {
-      source = { Color = "#1A1B26" },
-      height = "100%",
-      width = "100%",
-      opacity = 0.95,
-    },
-  },
+  -- window_background_gradient = {
+  --   colors = { "#1D261B", "#261A25" },
+  --   -- Specifices a Linear gradient starting in the top left corner.
+  --   orientation = { Linear = { angle = -45.0 } },
+  -- },
+  -- background = {
+  --   {
+  --     source = { File = wezterm.config_dir .. "/backdrops/space.jpg" },
+  --   },
+  --   {
+  --     source = { Color = "#1A1B26" },
+  --     height = "100%",
+  --     width = "100%",
+  --     opacity = 0.95,
+  --   },
+  -- },
 
   -- scrollbar
   enable_scroll_bar = true,
@@ -60,13 +60,13 @@ return {
   integrated_title_button_style = "Windows",
   integrated_title_button_color = "auto",
   integrated_title_button_alignment = "Right",
-  initial_cols = 120,
-  initial_rows = 24,
+  initial_cols = 180,
+  initial_rows = 48,
   window_padding = {
     left = 5,
-    right = 10,
-    top = 12,
-    bottom = 7,
+    right = 5,
+    top = 5,
+    bottom = 5,
   },
   window_close_confirmation = "AlwaysPrompt",
   window_frame = {
