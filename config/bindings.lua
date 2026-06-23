@@ -23,8 +23,8 @@ local keys = {
   { key = "f", mods = mod.SUPER, action = act.Search({ CaseInSensitiveString = "" }) },
 
   -- copy/paste --
-  { key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
-  { key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
+  -- { key = "c", mods = "CTRL|SHIFT", action = act.CopyTo("Clipboard") },
+  -- { key = "v", mods = "CTRL|SHIFT", action = act.PasteFrom("Clipboard") },
 
   -- tabs --
   -- tabs: spawn+close
@@ -70,17 +70,10 @@ local keys = {
   { key = "h", mods = mod.SUPER_REV, action = act.ActivatePaneDirection("Left") },
   { key = "l", mods = mod.SUPER_REV, action = act.ActivatePaneDirection("Right") },
 
-  -- panes: resize
-  { key = "UpArrow", mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Up", 1 }) },
-  { key = "DownArrow", mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Down", 1 }) },
-  { key = "LeftArrow", mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Left", 1 }) },
-  { key = "RightArrow", mods = mod.SUPER_REV, action = act.AdjustPaneSize({ "Right", 1 }) },
-
-  -- fonts --
-  -- fonts: resize
-  { key = "UpArrow", mods = mod.SUPER, action = act.IncreaseFontSize },
-  { key = "DownArrow", mods = mod.SUPER, action = act.DecreaseFontSize },
-  { key = "r", mods = mod.SUPER, action = act.ResetFontSize },
+  { key = "UpArrow", mods = mod.SUPER, action = act.ActivatePaneDirection("Up")},
+  { key = "DownArrow", mods = mod.SUPER, action = act.ActivatePaneDirection("Down") },
+  { key = "LeftArrow", mods = mod.SUPER, action = act.ActivatePaneDirection("Left") },
+  { key = "RightArrow", mods = mod.SUPER, action = act.ActivatePaneDirection("Right") },
 
   -- key-tables --
   -- resizes fonts
@@ -103,32 +96,9 @@ local keys = {
       timemout_miliseconds = 1000,
     }),
   },
-  -- rename tab bar
-  {
-    key = "R",
-    mods = "CTRL|SHIFT",
-    action = act.PromptInputLine({
-      description = "Enter new name for tab",
-      action = wezterm.action_callback(function(window, pane, line)
-        -- line will be `nil` if they hit escape without entering anything
-        -- An empty string if they just hit enter
-        -- Or the actual line of text they wrote
-        if line then
-          window:active_tab():set_title(line)
-        end
-      end),
-    }),
-  },
 }
 
 local key_tables = {
-  resize_font = {
-    { key = "k", action = act.IncreaseFontSize },
-    { key = "j", action = act.DecreaseFontSize },
-    { key = "r", action = act.ResetFontSize },
-    { key = "Escape", action = "PopKeyTable" },
-    { key = "q", action = "PopKeyTable" },
-  },
   resize_pane = {
     { key = "k", action = act.AdjustPaneSize({ "Up", 1 }) },
     { key = "j", action = act.AdjustPaneSize({ "Down", 1 }) },
@@ -198,7 +168,7 @@ local mouse_bindings = {
 }
 
 return {
-  disable_default_key_bindings = true,
+  disable_default_key_bindings = false,
   disable_default_mouse_bindings = true,
   leader = { key = "Space", mods = "CTRL|SHIFT" },
   keys = keys,
