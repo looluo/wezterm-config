@@ -116,22 +116,6 @@ local mouse_bindings = {
     mods = "CTRL",
     action = act.OpenLinkAtMouseCursor,
   },
-  -- Move mouse will only select text and not copy text to clipboard
-  {
-    event = { Down = { streak = 1, button = "Left" } },
-    mods = "NONE",
-    action = act.SelectTextAtMouseCursor("Cell"),
-  },
-  {
-    event = { Up = { streak = 1, button = "Left" } },
-    mods = "NONE",
-    action = act.ExtendSelectionToMouseCursor("Cell"),
-  },
-  {
-    event = { Drag = { streak = 1, button = "Left" } },
-    mods = "NONE",
-    action = act.ExtendSelectionToMouseCursor("Cell"),
-  },
   -- Triple Left click will select a line
   {
     event = { Down = { streak = 3, button = "Left" } },
@@ -164,6 +148,16 @@ local mouse_bindings = {
     event = { Down = { streak = 1, button = { WheelDown = 1 } } },
     mods = "NONE",
     action = act.ScrollByCurrentEventWheelDelta,
+  },
+  {
+    event = { Up = { streak = 1, button = "Right" } },
+    mods = "NONE",
+    action = act.PasteFrom("Clipboard"),
+  },
+  {
+    event = { Up = { streak = 1, button = "Left" } },
+    mods = "NONE",
+    action = act.CompleteSelection("Clipboard"),
   },
 }
 
